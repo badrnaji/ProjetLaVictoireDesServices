@@ -1,0 +1,15 @@
+{
+  "name": "knacss",
+  "homepage": "https://github.com/raphaelgoetter/KNACSS",
+  "version": "8.0.4",
+  "_release": "8.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v8.0.4",
+    "commit": "79167c0de0c07d44e767db7ff6818b135f463c74"
+  },
+  "_source": "https://github.com/raphaelgoetter/KNACSS.git",
+  "_target": "^8.0.4",
+  "_originalSource": "knacss",
+  "_direct": true
+}

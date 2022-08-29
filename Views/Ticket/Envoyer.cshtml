@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "Compte Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ProjetLaVictoireDesServices.Models.ViewModels.TicketViewModel
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Envoyer Ticket</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="dashboard" asp-action="index"><i class="fa fa-dashboard"></i>Home</a></li>
+                    <li class="breadcrumb-item active"><a href="#"></a>Envoyer Ticket</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                @if (TempData["msg"] != null)
+                {
+                    if (TempData["msg"].ToString() == "Done")
+                    {
+                        <div class="callout callout-success">
+                            <h5>Successful</h5>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="callout callout-danger">
+                            <h5>Failed</h5>
+                        </div>
+                    }
+                }
+
+                <div class="card card-primary">
+
+                    <form asp-controller="ticket" asp-action="envoyer" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="username">Titre</label>
+                                <input type="text" class="form-control" id="username" required="required"
+                                       asp-for="Ticket.Title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Description</label>
+                                <textarea class="form-control" asp-for="Ticket.Description" required="required"></textarea>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Statut</label>
+                                <select class="form-control" asp-for="Ticket.StatutId" asp-items="@Model.Statutes"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Categorie</label>
+                                <select class="form-control" asp-for="Ticket.CategorieId" asp-items="@Model.Categories"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Periode</label>
+                                <select class="form-control" asp-for="Ticket.PeriodeId" asp-items="@Model.Periodes"></select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exampleInputFile">Files</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="files" multiple="multiple" class="custom-file-input" 
+                                               id="exampleInputFile">
+                                        <p class="help-block">Options</p>
+                                        <label class="custom-file-label" for="exampleInputFile">Choisir le fichier</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
